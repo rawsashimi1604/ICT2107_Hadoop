@@ -1,0 +1,151 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def TaskOne():
+    N = 5
+    ind = np.arange(N)
+    width = 0.25
+
+    ByteDance = []
+    IBM = []
+    Microsoft = []
+    SAP = []
+    NCS = []
+
+    with open('./hadoop_data/part-r-00000', 'rb') as f:
+        contents = f.read().decode('utf-8')
+
+        # to get task 1 data...
+        for line in contents.splitlines():
+            # print("line")
+            # IF line begins with CASE1_
+            if line.startswith("CASE1_"):
+                company = line.split("_")[1]
+                sentiment = line.split("_")[2]
+                val = line.split("\t")[1]
+
+                print(f"{company} {sentiment}: {val}")
+
+                # Format = Company bad good neutral...
+                if (company == "ByteDance"):
+                    ByteDance.append(int(val))
+                elif (company == "IBM"):
+                    IBM.append(int(val))
+                elif (company == "Microsoft"):
+                    Microsoft.append(int(val))
+                elif (company == "SAP"):
+                    SAP.append(int(val))
+                elif (company == "NCS"):
+                    NCS.append(int(val))
+
+    # Convert each value in each array to % to scale...
+    ByteDanceNew = []
+    IBMNew = []
+    MicrosoftNew = []
+    SAPNew = []
+    NCSNew = []
+
+    for val in ByteDance:
+        ByteDanceNew.append(round((int(val) / sum(ByteDance)), 2))
+    for val in IBM:
+        IBMNew.append(round((int(val) / sum(IBM)), 2))
+    for val in Microsoft:
+        MicrosoftNew.append(round((int(val) / sum(Microsoft)), 2))
+    for val in SAP:
+        SAPNew.append(round((int(val) / sum(SAP)), 2))
+    for val in NCS:
+        NCSNew.append(round((int(val) / sum(NCS)), 2))
+
+    xvals = [ByteDanceNew[0], IBMNew[0], MicrosoftNew[0], SAPNew[0], NCSNew[0]]
+    bar1 = plt.bar(ind, xvals, width, color='r')
+
+    yvals = [ByteDanceNew[2], IBMNew[2], MicrosoftNew[2], SAPNew[2], NCSNew[2]]
+    bar2 = plt.bar(ind+width, yvals, width, color='#FFA500')
+
+    zvals = [ByteDanceNew[1], IBMNew[1], MicrosoftNew[1], SAPNew[1], NCSNew[1]]
+    bar3 = plt.bar(ind+width*2, zvals, width, color='g')
+
+    plt.xlabel("Companies")
+    plt.ylabel('Percent of Sentiments')
+    plt.title("Number of Bad/Neutral/Good")
+
+    plt.xticks(ind+width, ['ByteDance', 'IBM',
+                           'Microsoft', 'SAP', 'NCS'])
+    plt.legend((bar1, bar2, bar3), ('Bad', 'Neutral', 'Good'))
+    plt.show()
+
+
+def TaskTwo():
+    N = 5
+    ind = np.arange(N)
+    width = 0.25
+
+    ByteDance = []
+    IBM = []
+    Microsoft = []
+    SAP = []
+    NCS = []
+
+    with open('./hadoop_data/part-r-00000', 'rb') as f:
+        contents = f.read().decode('utf-8')
+
+        # to get task 1 data...
+        for line in contents.splitlines():
+            # print("line")
+            # IF line begins with CASE1_
+            if line.startswith("CASE2_"):
+                company = line.split("_")[1]
+                sentiment = line.split("_")[2]
+                val = line.split("\t")[1]
+
+                print(f"{company} {sentiment}: {val}")
+
+                # Format = Company bad good neutral...
+                if (company == "ByteDance"):
+                    ByteDance.append(int(val))
+                elif (company == "IBM"):
+                    IBM.append(int(val))
+                elif (company == "Microsoft"):
+                    Microsoft.append(int(val))
+                elif (company == "SAP"):
+                    SAP.append(int(val))
+                elif (company == "NCS"):
+                    NCS.append(int(val))
+
+    # Convert each value in each array to % to scale...
+    ByteDanceNew = []
+    IBMNew = []
+    MicrosoftNew = []
+    SAPNew = []
+    NCSNew = []
+
+    for val in ByteDance:
+        ByteDanceNew.append(round((int(val) / sum(ByteDance)), 2))
+    for val in IBM:
+        IBMNew.append(round((int(val) / sum(IBM)), 2))
+    for val in Microsoft:
+        MicrosoftNew.append(round((int(val) / sum(Microsoft)), 2))
+    for val in SAP:
+        SAPNew.append(round((int(val) / sum(SAP)), 2))
+    for val in NCS:
+        NCSNew.append(round((int(val) / sum(NCS)), 2))
+
+    xvals = [ByteDanceNew[0], IBMNew[0], MicrosoftNew[0], SAPNew[0], NCSNew[0]]
+    bar1 = plt.bar(ind, xvals, width, color='r')
+
+    yvals = [ByteDanceNew[1], IBMNew[1], MicrosoftNew[1], SAPNew[1], NCSNew[1]]
+    bar2 = plt.bar(ind+width, yvals, width, color='g')
+
+    plt.xlabel("Companies")
+    plt.ylabel('Percent of culture')
+    plt.title("Number of Good / Bad Culture")
+
+    plt.xticks(ind+width, ['ByteDance', 'IBM',
+                           'Microsoft', 'SAP', 'NCS'])
+    plt.legend((bar1, bar2), ('Bad Culture', 'Good Culture'))
+    plt.show()
+
+
+TaskOne()
+TaskTwo()
