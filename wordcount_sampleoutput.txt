@@ -1,0 +1,10 @@
+word, count
+Toxic, 12
+Good Culture, 34
+Political, 14
+Work-Life Balance, 23
+Bad Culture, 8
+Bad Management, 28
+Good Management, 6
+Nine Nine Six, 25
+Welfare-centric, 22
