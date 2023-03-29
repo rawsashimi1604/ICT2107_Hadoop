@@ -67,12 +67,12 @@ def TaskOne():
     bar3 = plt.bar(ind+width*2, zvals, width, color='g')
 
     plt.xlabel("Companies")
-    plt.ylabel('Total Numbers')
-    plt.title("Number of Bad/Neutral/Green")
+    plt.ylabel('Percent of Sentiments')
+    plt.title("Number of Bad/Neutral/Good")
 
     plt.xticks(ind+width, ['ByteDance', 'IBM',
                            'Microsoft', 'SAP', 'NCS'])
-    plt.legend((bar1, bar2, bar3), ('Bad', 'Neutral', 'Green'))
+    plt.legend((bar1, bar2, bar3), ('Bad', 'Neutral', 'Good'))
     plt.show()
 
 
@@ -138,7 +138,7 @@ def TaskTwo():
     bar2 = plt.bar(ind+width, yvals, width, color='g')
 
     plt.xlabel("Companies")
-    plt.ylabel('Total Numbers')
+    plt.ylabel('Percent of culture')
     plt.title("Number of Good / Bad Culture")
 
     plt.xticks(ind+width, ['ByteDance', 'IBM',
@@ -147,5 +147,5 @@ def TaskTwo():
     plt.show()
 
 
-# TaskOne()
+TaskOne()
 TaskTwo()
