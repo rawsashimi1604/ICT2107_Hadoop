@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 #   "/Users/damon/Documents/SIT/Y2T2/ICT2107/wordcount.csv", index_col=0)
 
 df = pd.read_csv(
-    "/Users/damon/Documents/SIT/Y2T2/ICT2107/Project/ICT2107_Hadoop/hadoop_data/part-r-00000", delimiter='\t', usecols=['word', 'count'], names=['word', 'count'])
+    "./hadoop_data/part-r-00000", delimiter='\t', usecols=['word', 'count'], names=['word', 'count'])
 print(df)
 
 
